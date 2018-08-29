@@ -1,0 +1,8 @@
+<div class="container">
+  <form name="Mform" ng-controller="Ejemplo">
+    <input type="text" name="input" [(ngModel)] = "str">
+  </form>
+  <div class="inf" *ngIf="str === 'rene1965'">
+      <a class="nav-link" [routerLink] = "['menu']">Acceder <span class="sr-only">(current)</span></a>
+    </div>
+</div>

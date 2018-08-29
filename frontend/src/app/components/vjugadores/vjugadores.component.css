@@ -1,0 +1,53 @@
+.container{
+    width: 300px;
+    margin-left: 0px;
+    font-size: 0.7em;
+    color:black;
+}
+
+#exampleModalLabel{
+    margin-right: 100px;
+    width:40%;
+    margin-left: 35%;
+    font-size: 3em;
+    color:black;
+    text-align: center;
+}
+.table{
+    color:black;
+    font-size: 0.85em;
+}
+
+tr{
+    border-color: #009688;
+
+}
+td{
+    border-color: #009688;
+
+}
+.table td.fit, 
+.table th.fit {
+
+    width: 24%;
+}
+.table thead{
+    border-bottom: 1px solid #009688;
+}
+.table thead{
+    color: #009688;
+}
+.table tbody{
+    border-bottom: 1px solid #009688;
+    border-top: 1px solid #009688;
+
+}
+.arriba{
+    color: #009688;
+    text-align: center;
+}
+.abajo{
+    color: red;
+    text-align: center;
+
+}

@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="row">
+      <div class="col s5">
+        <div class="card">
+          <div class="card-content">
+                <button type="button" autocomplete="off" class="btn btn-secondary" (click) = "getEquipos('Pre-Iniciacion')">Pre-Iniciacion</button>
+                <button type="button" autocomplete="off" class="btn btn-secondary" (click) = "getEquipos('Iniciacion')">Iniciacion</button>
+                <button type="button" autocomplete="off" class="btn btn-secondary" (click) = "getEquipos('Pre-Infantil')">Pre-Infantil</button><br>
+                <button type="button" autocomplete="off" class="btn btn-secondary" (click) = "getEquipos('Infantil')">Infantil</button>
+                <button type="button" autocomplete="off" class="btn btn-secondary" (click) = "getEquipos('Pre-Junior')">Pre-Junior</button>
+                <button type="button" autocomplete="off" class="btn btn-secondary" (click) = "getEquipos('Junior')">Junior</button>
+            <form #trabajoForm="ngForm" (ngSubmit)="addTrabajadores(trabajoForm)">
+              <div class="form-group col-s10">
+                <label for="inputPassword3" class="row-sm-2">Categoria</label>
+                <select class="form-control" required data-width="100%" type="text" name="categoria"  #categoria="ngModel" [(ngModel)]="TrabajadoresService.selectedTrabajador.categoria" >
+                  <option value="Pre-Iniciacion">Pre-Iniciacion</option>
+                  <option value="Iniciacion">Iniciacion</option>
+                  <option value="Pre-Infantil">Pre-Infantil</option>
+                  <option value="Infantil">Infantil</option>
+                  <option value="Pre-Junior">Pre-Junior</option>
+                  <option value="Junior">Junior</option>
+  
+                </select>
+              </div>  
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="TrabajadoresService.selectedTrabajador._id">
+              <div class="row">
+                <div class="input-field col-s12">
+                  <input type="text" name="name" #name="ngModel" [(ngModel)]="TrabajadoresService.selectedTrabajador.name" placeholder="Nombre Completo">
+                </div>
+                <div class="form-group center">
+                    <label for="inputPassword3" class="row-sm-2">Equipos</label>
+                    <select class="form-control" required data-width="100%" type="text" name="equipo"  #name="ngModel" [(ngModel)]="TrabajadoresService.selectedTrabajador.equipo" >
+                      <option *ngFor="let equipos of EquiposService.equipos" [value]="equipos.name">{{equipos.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group center">
+                    <label for="inputPassword3" class="row-sm-2">Equipos</label>
+                    <select class="form-control" required data-width="100%" type="text" name="trabajo"  #name="ngModel" [(ngModel)]="TrabajadoresService.selectedTrabajador.trabajo" >
+                      <option value="Entrenador">Entrenador</option>
+                      <option value="Delegado">Delegado</option>
+                      <option value="Coach">Coach</option>
+                    </select>
+                </div>
+                
+                <div class="card-action">
+                  <div class="input-field col-s12">
+                    <button class="btn right" style="margin-left: 2px;" (click)="resetForm(trabajoForm)">Limpiar</button>
+                    <button class="btn right">Guardar</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col s7">
+        <table class="striped highlight black-text">
+          <thead>
+            <th>Nombre</th>
+            <th>Equipo</th>
+            <th>trabajo</th>
+            <th>Categoria</th>
+
+          </thead>
+          <tbody>
+            <tr *ngFor="let trabajo of TrabajadoresService.trabajadores">
+              <td>{{ trabajo.name }}</td>
+              <td>{{ trabajo.equipo }}</td>
+              <td>{{ trabajo.trabajo }}</td>
+              <td>{{ trabajo.categoria }}</td>
+
+              <td>
+                <a (click)="editTrabajador(trabajo)">
+                  <i class="material-icons">edit</i>
+                </a>
+                <a (click)="deleteTrabajador(trabajo._id, trabajoForm)">
+                  <i class="material-icons">delete</i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

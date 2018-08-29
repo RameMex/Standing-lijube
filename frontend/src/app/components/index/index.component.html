@@ -1,0 +1,69 @@
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav center">
+            <a class="nav-item nav-link" (click)="Url = 'Pre-Iniciacion'" [routerLink] = "['Pre-Iniciacion']" routerLinkActive="active">Pre-Iniciacion <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" (click)="Url = 'Iniciacion'" [routerLink] = "['Iniciacion']" routerLinkActive="active">Iniciacion</a>
+            <a class="nav-item nav-link" (click)="Url = 'Pre-Infantil'" [routerLink] = "['Pre-Infantil']">Pre-Infantil</a> 
+            <a class="nav-item nav-link" (click)="Url = 'Infantil'" [routerLink] = "['Infantil']">Infantil</a>
+            <a class="nav-item nav-link" (click)="Url = 'Pre-Junior'" [routerLink] = "['Pre-Junior']">Pre-Junior</a>
+            <a class="nav-item nav-link" (click)="Url = 'Junior'" [routerLink] = "['Junior']">Junior</a>
+          </div>
+        </div>
+      </nav>
+      <div class="especial">
+        <div class="container center" height="auto" width="auto">
+          <div class="separacions"></div>
+          <div class="lijube center"><h1>Lijube</h1></div>
+          <br>
+          <br>
+          <br>
+        </div>
+        <div class="separacion"></div>
+        <div class="categoria sticky-top">{{Url}}</div>
+        <div class="separacion"></div>
+
+      </div>
+      <div class="inferiorBody">
+        <div class="posiciones">
+            <div class="col center">Resultados</div>
+            <br>
+            <br>
+            <br>
+            <div class="posiciones">
+                <app-posiciones [url] = 'Url'></app-posiciones>
+            </div>
+        </div>
+        <app-resultados [url] = 'Url'></app-resultados>
+        <footer>
+          <div class="container">
+              <div class="row">
+                  <div class="col">
+                    <p class="v2018">Creado Por:</p></div>
+                  <div class="col">
+                    <p class="v2018">Diseño de la pagina</p>
+                  </div>
+                  <div class="col">
+                    <p class="v2018">Redes Sociales:</p>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                      <p class="v2018">René Meza</p> 
+                    </div>
+                    <div class="col">
+                      <p class="v2018">2018</p>
+                    </div>
+                    <div class="col">
+                      <p class="v2018"><a href="https://www.facebook.com/fernando.lozano.7161953">Facebook</a></p>
+                    </div>
+                </div> 
+          </div>
+          <div class="boton" [routerLink] = "['cont']">
+          </div>            
+        </footer>
+      </div> 
+      

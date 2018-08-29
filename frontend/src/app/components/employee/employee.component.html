@@ -1,0 +1,136 @@
+<div class="container">
+  <div class="row">
+    <div class="col s5">
+      <div class="card">
+        <div class="card-content">
+              <button type="button" autocomplete="off" class="btn btn-secondary" (click) = "getEquipos('Pre-Iniciacion')">Pre-Iniciacion</button>
+              <button type="button" autocomplete="off" class="btn btn-secondary" (click) = "getEquipos('Iniciacion')">Iniciacion</button>
+              <button type="button" autocomplete="off" class="btn btn-secondary" (click) = "getEquipos('Pre-Infantil')">Pre-Infantil</button><br>
+              <button type="button" autocomplete="off" class="btn btn-secondary" (click) = "getEquipos('Infantil')">Infantil</button>
+              <button type="button" autocomplete="off" class="btn btn-secondary" (click) = "getEquipos('Pre-Junior')">Pre-Junior</button>
+              <button type="button" autocomplete="off" class="btn btn-secondary" (click) = "getEquipos('Junior')">Junior</button>
+          <form #employeeForm="ngForm" (ngSubmit)="addEmployee(employeeForm)">
+            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="employeeService.selectedEmployee._id">
+            <div class="form-group col-s10">
+              <label for="inputPassword3" class="row-sm-2">Categoria</label>
+              <select class="form-control" required data-width="100%" type="text" name="categoria"  #categoria="ngModel" [(ngModel)]="employeeService.selectedEmployee.categoria" >
+                <option value="Pre-Iniciacion">Pre-Iniciacion</option>
+                <option value="Iniciacion">Iniciacion</option>
+                <option value="Pre-Infantil">Pre-Infantil</option>
+                <option value="Infantil">Infantil</option>
+                <option value="Pre-Junior">Pre-Junior</option>
+                <option value="Junior">Junior</option>
+
+              </select>
+            </div>  
+            <div class="input-field col-s12">
+                <input type="text" name="name" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.name" placeholder="Nombre Completo">
+              </div>
+            <div class="row">
+              <div class="input-field col-s12">
+                <input type="date" name="date" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.date" placeholder="Fecha">
+              </div>
+            </div>
+              <div class="form-group center">
+                  <label for="inputPassword3" class="row-sm-2">Posicion</label>
+                  <select class="form-control" [(ngModel)]="employeeService.selectedEmployee.position"  name="position" #name="ngModel">
+                    <option value="">Selecciona Opcion</option>
+                    <option value="Pitcher">Pitcher</option>
+                    <option value="Catcher">Catcher</option>
+                    <option value="Primera Base">Primera Base</option>
+                    <option value="Segunda Base">Segunda Base</option>
+                    <option value="Tercera Base">Tercera Base</option>
+                    <option value="ShortStop">ShortStop</option>
+                    <option value="Field Izquierdo">Field Izquierdo</option>
+                    <option value="Field Central">Field Central</option>
+                    <option value="Field Derecho">Field Derecho</option>
+                  </select>
+                </div>
+              <div class="row">
+              <div class="form-group col-s10">
+                  <label for="inputPassword3" class="row-sm-2">Equipos</label>
+                  <select class="form-control" required data-width="100%" type="text" name="team"  #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.team" >
+                    <option *ngFor="let equipos of EquiposService.equipos" [value]="equipos.name">{{equipos.name}}</option>
+                  </select>
+                </div>
+              <div class="input-field center col-s2">
+                  <label for="inputPassword3" class="row-sm-2">Numero Del Jugador</label>
+                <input type="text" name="number" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.number" placeholder="Numero Del Jugador">
+              </div>
+            </div>
+            <div class="row">
+                <div class="form-group center">
+                    <label for="inputPassword3" class="row-sm-2">Batea</label>
+                    <select class="form-control" [(ngModel)]="employeeService.selectedEmployee.bateador"  name="bateador" #name="ngModel">
+                      <option value="">Selecciona Opcion</option>
+                      <option value="Derecho">Derecho</option>
+                      <option value="Izquierdo">Izquierdo</option>
+                    </select>
+                  </div>
+                  <div class="form-group center">
+                      <label for="inputPassword3" class="row-sm-2">Cacha</label>
+                      <select class="form-control" [(ngModel)]="employeeService.selectedEmployee.cacha"  name="cacha" #name="ngModel">
+                        <option value="">Selecciona Opcion</option>
+                        <option value="Derecho">Derecho</option>
+                        <option value="Izquierdo">Izquierdo</option>
+                      </select>
+                    </div>
+                    <div class="form-group center">
+                        <label for="inputPassword3" class="row-sm-2">Alta Baja</label>
+                        <select class="form-control" [(ngModel)]="employeeService.selectedEmployee.situacion"  name="situacion" #name="ngModel">
+                          <option value="">Selecciona Opcion</option>
+                          <option value="Alta">Alta</option>
+                          <option value="Baja">Baja</option>
+                        </select>
+                      </div>
+            </div>
+              <div class="row">
+              <div class="card-action">
+                <div class="input-field col-s12">
+                  <button class="btn right" style="margin-left: 2px;" (click)="resetForm(employeeForm)">Limpiar</button>
+                  <button class="btn right">Guardar</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col s7">
+      <table class="striped highlight black-text">
+        <thead>
+          <th>Numero</th>
+          <th>Nombre</th>
+          <th>Categoria</th>
+          <th>Fecha</th>
+          <th>Posicion</th>
+          <th>batea</th>
+          <th>cacha</th>
+          <th>Equipo</th>
+          <th>Situacion</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employeeService.employees">
+            <td>{{ employee.number }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.categoria }}</td>
+            <td>{{ employee.date }}</td>
+            <td>{{ employee.position }}</td>
+            <td>{{ employee.bateador }}</td>
+            <td>{{ employee.cacha }}</td>
+            <td>{{ employee.team }}</td>
+            <td>{{ employee.situacion }}</td>
+            <td>
+              <a (click)="editEmployee(employee)">
+                <i class="material-icons">edit</i>
+              </a>
+              <a (click)="deleteEmployee(employee._id, employeeForm)">
+                <i class="material-icons">delete</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

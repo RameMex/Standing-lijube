@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="card">
+        <table class="table table-hover table-dark table-responsive-md table-fixed">
+              <thead class="thead-dark">
+                <th>#</th>
+                <th class = "fit">Equipo</th>
+                <th>JJ</th>
+                <th>JG</th>
+                <th>JGF</th>
+                <th>JP</th>
+                <th>JPF</th>
+                <th>PCT</th>
+              </thead>
+            <tbody>
+                <tr *ngFor="let posiciones of PosicionesService.posiciones | orderBy: order:reverse:'case-insensitive';let i = index; let isFirst = first" >
+                <td>{{i+1}}</td>
+                <td class="fit"><a id = "equipo" data-toggle="modal"  data-target="#exampleModal" (click)="valor = posiciones.equipo"  data-backdrop="false" >{{ posiciones.equipo }}</a></td>
+                <div class="modal fade " id="exampleModal" role="dialog" >
+                        <div class="modal-dialog" role="document" modal-xl>
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body center">
+                                <app-vjugadores [valor] = 'valor' [url] = 'url'></app-vjugadores>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                <td >{{ posiciones.jj }}</td>
+                <td >{{ posiciones.jg }}</td>
+                <td >{{ posiciones.jgf }}</td>
+                <td >{{ posiciones.jp }}</td>
+                <td >{{ posiciones.jpf }}</td>
+                <td ><div *ngIf="posiciones.jg > 0">{{(posiciones.jg /posiciones.jj) | number : '1.2-2'  }}</div><div *ngIf="posiciones.jg == 0">0</div></td>
+            </tr>
+            </tbody>
+         </table>
+    </div>
+</div>

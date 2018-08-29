@@ -1,0 +1,52 @@
+td{
+    height: 80px;
+}
+#myInput{
+    width: 100%;
+    height: 60px;
+    font-size: 1.8em;
+}
+.table.table-hover.table-responsive-md.table-fixed td{
+    border-bottom: 2px solid #3fa49b;
+}
+#equipo1{
+    font-size: 2em;
+    text-align:right;
+    max-width: 387px;
+    width: 387px;
+}   
+#uno{
+    font-size: 0.7em;
+}
+#dos{
+    font-size: 0.7em;
+}
+.uno{
+    font-size: 0.7em;
+    color: red;
+}
+.dos{
+    font-size: 0.7em;
+    color: blue;
+}
+#equipo2{
+    font-size: 2em;
+    text-align:left;
+}
+#resultado1{
+    text-align: right;
+    font-size: 2em;
+
+}
+#resultado2{
+    text-align: left;
+    font-size: 2em;
+    border-left: 1px solid #3fa49b;
+}
+#fecha{
+    background-color: #3fa49b;
+    text-align: center;
+    font-size: 1.2em;
+    border-bottom: 2px solid white;
+    color: white;
+}

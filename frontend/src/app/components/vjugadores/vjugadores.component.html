@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-9">
+    <div class="table-responsive-xl">
+      <h5 class="modal-title center" id="exampleModalLabel">{{valor}}</h5>
+      <table class="table table-hover">
+          <thead>
+              <th>Numero</th>
+              <th class="fit">Nombre</th>
+              <th>Fecha</th>
+              <th>Posicion</th>
+              <th>Batea</th>
+              <th>Tira</th>
+              <th id="estatus">Estatus</th>
+          </thead>
+          <tbody>   
+            <tr *ngFor="let employee of employeeService.employees">
+                <td>{{ employee.number }}</td>
+                <td class="fit">{{ employee.name }}</td>
+                <td>{{ employee.date }}</td>
+                <td>{{ employee.position }}</td>
+                <td>{{ employee.bateador }}</td>
+                <td>{{ employee.cacha }}</td>
+                <td >
+                  <div class="otross" *ngIf="employee.situacion != ''">
+                    <div class="arriba" *ngIf="employee.situacion === 'Alta'">
+                        <i class="small material-icons">arrow_drop_up</i>
+                      </div>
+                      <div class="abajo" *ngIf="employee.situacion === 'Baja'">
+                          <i class="small material-icons">arrow_drop_down</i>
+                        </div>
+                  </div>
+                  </td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+  </div>
+  <div class="col-3">
+      <div class="card teal">
+          <div class="card-content black-text">
+        <ul class="collection with-header">
+            <li class="collection-header"><h5>Entrenador</h5></li>
+            <div class="nose"  *ngFor="let trabajadores of TrabajadoresService.trabajadores">
+                <li class="collection-item"  *ngIf="trabajadores.trabajo === 'Entrenador'" ><div>{{trabajadores.name}}<a class="secondary-content"><i class="material-icons">donut_small</i></a></div></li>
+            </div>
+          </ul>
+
+          <ul class="collection with-header">
+              <li class="collection-header"><h5>Coach</h5></li>
+              <div class="nose"  *ngFor="let trabajadores of TrabajadoresService.trabajadores">
+                  <li class="collection-item"  *ngIf="trabajadores.trabajo === 'Coach'" ><div>{{trabajadores.name}}<a class="secondary-content"><i class="material-icons">donut_large</i></a></div></li>
+              </div>
+            </ul>
+            <ul class="collection with-header">
+                <li class="collection-header"><h5>Delegados</h5></li>
+                <div class="nose"  *ngFor="let trabajadores of TrabajadoresService.trabajadores">
+                    <li class="collection-item"  *ngIf="trabajadores.trabajo === 'Delegado'" ><div>{{trabajadores.name}}<a class="secondary-content"><i class="material-icons">donut_large</i></a></div></li>
+                </div>
+              </ul>
+        </div>
+      </div>
+  </div>
+  </div>

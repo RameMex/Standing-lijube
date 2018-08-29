@@ -1,0 +1,23 @@
+<input  class="form-control" id="myInput" type="text" placeholder="Buscar..">
+<div class="card">   
+  <table class="table table-hover table-responsive-md table-fixed">
+      <tbody id="myTable">
+          <tr  *ngFor="let partidos of PartidosService.partidos" >
+            <td id = "fecha">{{partidos.fecha}}</td>
+            <td id = "equipo1" ng-style="color:'red'"  >{{ partidos.equipo1 }}<br><p id="uno" *ngIf="partidos.empate === ''" >{{ partidos.resultado1 > partidos.resultado2 ? "Gano": "Perdio" }}</p>
+                                                                                  <p id="uno" *ngIf="partidos.empate === 'Empate'" >Perdio</p>
+                                                                                  <p id="uno" *ngIf="partidos.empate != '' &&  partidos.empate != 'Empate' " >{{ partidos.empate === partidos.equipo1 ? "Gano": "Perdio" }}</p>
+            </td>
+            <td id = "resultado1">{{ partidos.resultado1 }}</td>
+            <td id = "resultado2">{{ partidos.resultado2 }}</td>
+            <td id = "equipo2">{{ partidos.equipo2 }}<br><p id="dos" *ngIf="partidos.empate === ''"  >{{ partidos.resultado1 < partidos.resultado2 ? "Gano": "Perdio" }}</p>
+                                                         <p id="dos" *ngIf="partidos.empate === 'Empate'" >Perdio</p>
+                                                         <p id="dos" *ngIf="partidos.empate != '' &&  partidos.empate != 'Empate' " >{{ partidos.empate === partidos.equipo2 ? "Gano": "Perdio" }}</p>
+                                                                      
+            </td>
+          <td></td>
+      </tr>
+      </tbody>
+   </table>
+
+</div>

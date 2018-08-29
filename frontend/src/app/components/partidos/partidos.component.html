@@ -1,0 +1,111 @@
+<div class="container">
+    <div class="row">
+      <div class="col s5">
+        <div class="card">
+          <div class="card-content">
+              <form name="categoria"></form>
+              <button type="button"  autocomplete="off" class="btn btn-secondary" (click) = "getEquipos('Pre-Iniciacion')">Pre-Iniciacion</button>
+              <button type="button"  autocomplete="off" class="btn btn-secondary" (click) = "getEquipos('Iniciacion')">Iniciacion</button>
+              <button type="button"  autocomplete="off" class="btn btn-secondary" (click) = "getEquipos('Pre-Infantil')">Pre-Infantil</button><br>
+              <button type="button"  autocomplete="off" class="btn btn-secondary" (click) = "getEquipos('Infantil')">Infantil</button>
+              <button type="button"  autocomplete="off" class="btn btn-secondary" (click) = "getEquipos('Pre-Junior')">Pre-Junior</button>
+              <button type="button"  autocomplete="off" class="btn btn-secondary" (click) = "getEquipos('Junior')">Junior</button>
+            <form #partidoForm="ngForm" (ngSubmit)="addPartido(partidoForm)">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="PartidosService.selectedPartido._id">
+              <div class="row">
+                  <div class="form-group col-s10">
+                      <label for="inputPassword3" class="row-sm-2">Categoria</label>
+                      <select class="form-control" required data-width="100%" type="text" name="categoria"  #categoria="ngModel" [(ngModel)]="PartidosService.selectedPartido.categoria" >
+                        <option value="Pre-Iniciacion">Pre-Iniciacion</option>
+                        <option value="Iniciacion">Iniciacion</option>
+                        <option value="Pre-Infantil">Pre-Infantil</option>
+                        <option value="Infantil">Infantil</option>
+                        <option value="Pre-Junior">Pre-Junior</option>
+                        <option value="Junior">Junior</option>
+
+                      </select>
+                    </div>
+                  <div class="row">
+                    <div class="form-group col-s10">
+                      <label for="inputPassword3" class="row-sm-2">Equipos</label>
+                      <select class="form-control" required data-width="100%" type="text" name="equipo1"  #name="ngModel" [(ngModel)]="PartidosService.selectedPartido.equipo1" >
+                        <option *ngFor="let equipos of EquiposService.equipos" [value]="equipos.name">{{equipos.name}}</option>
+                      </select>
+                    </div>
+              
+                <div class="input-field col-s12">
+                  <input type="text" name="resultado1" #resultado1="ngModel" [(ngModel)]="PartidosService.selectedPartido.resultado1" placeholder="Resultado 1">
+                </div>
+                  </div>
+                <div class="form-group col-s10">
+                    <label for="inputPassword3" class="row-sm-2">Equipos</label>
+                    <select class="form-control" required data-width="100%" type="text" name="equipo2"  #name="ngModel" [(ngModel)]="PartidosService.selectedPartido.equipo2" >
+                      <option *ngFor="let equipos of EquiposService.equipos" [value]="equipos.name">{{equipos.name}}</option>
+                    </select>
+                  </div>
+                <div class="input-field col-s12">
+                    <input type="text" name="resultado2" #resultado2="ngModel" [(ngModel)]="PartidosService.selectedPartido.resultado2" placeholder="Resultado 2">
+                </div>
+                <div class="form-group col-s10">
+                    <label for="inputPassword3" class="row-sm-2">Empate o forfeit</label>
+                    <select class="form-control" required data-width="100%" type="text" name="empate"  #name="ngModel" [(ngModel)]="PartidosService.selectedPartido.empate" >
+                      <option value="">--Selecciona Opcion--</option>
+                      <option value="Empate">Empate</option>
+                      <option *ngFor="let equipos of EquiposService.equipos" [value]="equipos.name">{{equipos.name}}</option>
+                    </select>
+                  </div>
+                
+                <div class="input-field col-s12">
+                    <input type="date" name="fecha" #fecha="ngModel" [(ngModel)]="PartidosService.selectedPartido.fecha" placeholder="Fecha">
+                  </div>    
+                <div class="card-action">
+                  <div class="input-field col-s12">
+                      <button class="btn right" style="margin-left: 2px;" (click)="resetForm(partidoForm)">Limpiar</button>
+                      <button class="btn right">Guardar</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col s7">
+        <table class="striped highlight black-text">
+          <thead>
+            <th>Categoria</th>
+            <th>Equipo 1</th>
+            <th>Resultado 1</th>
+            <th>Equipo 2</th>
+            <th>Resultado 2</th>
+            <th>empate</th>
+            <th>fecha</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let partidos of PartidosService.partidos">
+              <td>{{ partidos.categoria }}</td>
+              <td>{{ partidos.equipo1 }}</td>
+              <td>{{ partidos.resultado1 }}</td>
+              <td>{{ partidos.equipo2 }}</td>
+              <td>{{ partidos.resultado2 }}</td>
+              <td>{{ partidos.empate }}</td>
+              <td>{{ partidos.fecha }}</td>
+              <td>
+                <a (click)="editPartido(partidos)">
+                  <i class="material-icons">edit</i>
+                </a>
+                <a (click)="deletePartido(partidos._id, partidoForm)">
+                  <i class="material-icons">delete</i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+        $scope.name = EquiposService.equipos;
+    });
+  </script>
