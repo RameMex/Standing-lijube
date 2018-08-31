@@ -8,8 +8,8 @@ const { mongoose } = require('./database');
 app.set('port', process.env.PORT || 3000);
 
 // Middlewares
-//app.use(cors({origin: 'https://standing-lijube.firebaseapp.com'}));
-app.use(cors({origin: 'http://localhost:4200'}));
+app.use(cors({origin: 'https://standing-lijube.firebaseapp.com'}));
+//app.use(cors({origin: 'http://localhost:4200'}));
 app.use(express.json());
 // Routes
 app.use('/api/employees', require('./routes/employee.routes'));

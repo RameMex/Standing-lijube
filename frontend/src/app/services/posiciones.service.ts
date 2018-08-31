@@ -13,8 +13,8 @@ export class PosicionesService {
   selectedPosicion: Posiciones;
   posiciones: Posiciones[];
   
-  //readonly URL_API = 'https://standing-lijube.herokuapp.com/api/posiciones';
-  readonly URL_API = 'http://localhost:3000/api/posiciones';
+  readonly URL_API = 'https://standing-lijube.herokuapp.com/api/posiciones';
+  //readonly URL_API = 'http://localhost:3000/api/posiciones';
 
 
   
