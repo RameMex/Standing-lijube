@@ -24,10 +24,13 @@
                   <div class="otross" *ngIf="employee.situacion != ''">
                     <div class="arriba" *ngIf="employee.situacion === 'Alta'">
                         <i class="small material-icons">arrow_drop_up</i>
-                      </div>
-                      <div class="abajo" *ngIf="employee.situacion === 'Baja'">
+                    </div>
+                    <div class="abajo" *ngIf="employee.situacion === 'Baja'">
                           <i class="small material-icons">arrow_drop_down</i>
-                        </div>
+                    </div>
+                    <div class="otro" *ngIf="employee.situacion === 'Promovido'">
+                        <p>Promovido</p>
+                  </div>
                   </div>
                   </td>
             </tr>

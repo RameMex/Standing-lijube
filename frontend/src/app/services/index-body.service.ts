@@ -9,7 +9,7 @@ export class IndexBodyService {
   selectedPartido: Partidos;
   partidos: Partidos[];
   
-  readonly URL_API = 'https://standing-lijub.herokuapp.com/api/partidos';
+  readonly URL_API = 'https://standing-lijube.herokuapp.com/api/partidos';
   //readonly URL_API = 'http://localhost:3000/api/partidos';
 
 
