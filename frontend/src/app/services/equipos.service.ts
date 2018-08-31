@@ -12,8 +12,8 @@ export class EquiposService {
   equipos: Equipos[];
   posiciones: Posiciones[];
   
-  readonly URL_API = 'https://standing-lijube.herokuapp.com/api/equipos';
-  //readonly URL_API = 'http://localhost:3000/api/equipos';
+  //readonly URL_API = 'https://standing-lijube.herokuapp.com/api/equipos';
+  readonly URL_API = 'http://localhost:3000/api/equipos';
 
   constructor(private http: HttpClient) {
     this.selectedEquipo = new Equipos();

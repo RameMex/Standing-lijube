@@ -20,7 +20,7 @@ partidoCtrl.createPartido = async (req, res, next) => {
     });
     console.log(req.body.empate);
    if(req.body.empate == "" ){
-        if(req.body.resultado1 < req.body.resultado2){
+        if(req.body.resultado1 > req.body.resultado2){
             var posiciones2 = await Posiciones.find({'equipo':req.body.equipo2})
             var posiciones1 = await Posiciones.find({'equipo':req.body.equipo1})
             var jj = posiciones2.map(function (posiciones2) {return posiciones2.jj;});
@@ -241,7 +241,7 @@ partidoCtrl.deletePartido = async (req, res, next) => {
     var resultado1 = partidos.map(function (partidos) {return partidos.resultado1;});
     var resultado2 = partidos.map(function (partidos) {return partidos.resultado2;});
     if(empate == "" ){
-        if(resultado1 < resultado2){
+        if(resultado1 > resultado2){
             var posiciones2 = await Posiciones.find({'equipo':equipo2})
             var posiciones1 = await Posiciones.find({'equipo':equipo1})
             var jj = posiciones2.map(function (posiciones2) {return posiciones2.jj;});

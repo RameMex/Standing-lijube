@@ -8,8 +8,8 @@ export class TrabajadoresService {
   selectedTrabajador: Trabajadores;
   trabajadores: Trabajadores[];
   
-  readonly URL_API = 'https://standing-lijube.herokuapp.com/api/trabajadores';
-  //readonly URL_API = 'http://localhost:3000/api/trabajadores';
+  //readonly URL_API = 'https://standing-lijube.herokuapp.com/api/trabajadores';
+  readonly URL_API = 'http://localhost:3000/api/trabajadores';
 
   constructor(private http: HttpClient) {
     this.selectedTrabajador = new Trabajadores();
