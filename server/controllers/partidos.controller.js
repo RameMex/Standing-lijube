@@ -21,8 +21,8 @@ partidoCtrl.createPartido = async (req, res, next) => {
     console.log(req.body.empate);
     console.log(req.body.resultado1);
     console.log(req.body.resultado2);
-    var resultado11 = Number(resultado1);
-    var resultado21 = Number(resultado2);
+    var resultado11 = Number(req.body.resultado1);
+    var resultado21 = Number(req.body.resultado2);
     console.log(resultado11);
     console.log(resultado21);
    if(req.body.empate == "" ){
