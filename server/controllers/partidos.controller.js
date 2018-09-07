@@ -19,12 +19,12 @@ partidoCtrl.createPartido = async (req, res, next) => {
         fecha: req.body.fecha
     });
     console.log(req.body.empate);
-    console(req.body.resultado1);
-    console(req.body.resultado2);
+    console.log(req.body.resultado1);
+    console.log(req.body.resultado2);
     var resultado11 = Number(resultado1);
     var resultado21 = Number(resultado2);
-    console(resultado11);
-    console(resultado21);
+    console.log(resultado11);
+    console.log(resultado21);
    if(req.body.empate == "" ){
         if(resultado11 > resultado21){
             var posiciones2 = await Posiciones.find({'equipo':req.body.equipo2,'categoria':req.body.categoria})
