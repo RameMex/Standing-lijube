@@ -34,7 +34,7 @@
                 <td >{{ posiciones.jgf }}</td>
                 <td >{{ posiciones.jp }}</td>
                 <td >{{ posiciones.jpf }}</td>
-                <td ><div *ngIf="posiciones.jg > 0">{{(posiciones.jg /posiciones.jj) | number : '1.2-2'  }}</div><div *ngIf="posiciones.jg == 0">0</div></td>
+                <td ><div *ngIf="posiciones.jg > 0" [ngClass] = "pct">{{(posiciones.jg /posiciones.jj) | number : '1.2-2'  }}</div><div *ngIf="posiciones.jg == 0">0</div></td>
             </tr>
             </tbody>
          </table>

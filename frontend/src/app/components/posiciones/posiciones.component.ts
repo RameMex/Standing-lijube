@@ -20,6 +20,7 @@ import { OrderPipe } from 'ngx-order-pipe';
 })
 export class PosicionesComponent implements OnInit {
   @Input('url') url: String;
+  pct: Number = 0;
   order: string = 'jg';
   reverse: boolean = true;
   valor:string = 'Cachorros';
@@ -58,10 +59,8 @@ export class PosicionesComponent implements OnInit {
     getPosiciones(){
     this.PosicionesService.getPosiciones()
       .subscribe(res =>{
-        
         this.PosicionesService.posiciones = res as Posiciones[];
         this.PosicionesService.posiciones = this.PosicionesService.posiciones.filter(Posicion => Posicion.categoria === this.url)
-
 
       })
   }

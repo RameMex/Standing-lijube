@@ -4,34 +4,34 @@
       <h5 class="modal-title center" id="exampleModalLabel">{{valor}}</h5>
       <table class="table table-hover">
           <thead>
-              <th>Numero</th>
-              <th class="fit">Nombre</th>
-              <th>Fecha</th>
               <th>Posicion</th>
               <th>Batea</th>
               <th>Tira</th>
+              <th>Numero</th>
+              <th class="fit">Nombre</th>
+              <th>Fecha</th>
               <th id="estatus">Estatus</th>
           </thead>
           <tbody>   
             <tr *ngFor="let employee of employeeService.employees">
-                <td>{{ employee.number }}</td>
-                <td class="fit">{{ employee.name }}</td>
-                <td>{{ employee.date }}</td>
                 <td>{{ employee.position }}</td>
                 <td>{{ employee.bateador }}</td>
                 <td>{{ employee.cacha }}</td>
+                <td>{{ employee.number }}</td>
+                <td class="fit">{{ employee.name }}</td>
+                <td>{{ employee.date }}</td>
                 <td >
-                  <div class="otross" *ngIf="employee.situacion != ''">
-                    <div class="arriba" *ngIf="employee.situacion === 'Alta'">
-                        <i class="small material-icons">arrow_drop_up</i>
+                    <div class="otross" *ngIf="employee.situacion != ''">
+                      <div class="arriba" *ngIf="employee.situacion === 'Alta'">
+                          <i class="small material-icons">arrow_drop_up</i>
+                      </div>
+                      <div class="abajo" *ngIf="employee.situacion === 'Baja'">
+                            <i class="small material-icons">arrow_drop_down</i>
+                      </div>
+                      <div class="otro" *ngIf="employee.situacion === 'Promovido'">
+                          <p>Promovido</p>
                     </div>
-                    <div class="abajo" *ngIf="employee.situacion === 'Baja'">
-                          <i class="small material-icons">arrow_drop_down</i>
                     </div>
-                    <div class="otro" *ngIf="employee.situacion === 'Promovido'">
-                        <p>Promovido</p>
-                  </div>
-                  </div>
                   </td>
             </tr>
           </tbody>

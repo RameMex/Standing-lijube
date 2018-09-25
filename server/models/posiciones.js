@@ -10,6 +10,7 @@ const posicionesSchema = new Schema({
     jp: { type: Number, required: false, default:0},           
     jpnf: { type: Number, required: false, default:0},     
     jpf: { type: Number, required: false, default:0},
+    pct: { type: Number, required: false, default:0},
     categoria: { type: String, required: false, default:''},     
 });
 module.exports = mongoose.model('Posiciones', posicionesSchema);

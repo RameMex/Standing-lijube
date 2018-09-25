@@ -85,14 +85,14 @@ partidoCtrl.createPartido = async (req, res, next) => {
             await Posiciones.findOneAndUpdate(
                 {'equipo':req.body.equipo1,'categoria':req.body.categoria},
                 { "$set" : 
-                    {'jj':jj2,
+                    {'jj':jj,
                     'jp':jp,
                     'jpnf':jpnf} 
                 });
             await Posiciones.findOneAndUpdate(
                 {'equipo':req.body.equipo2,'categoria':req.body.categoria},
                 { "$set" : 
-                    {'jj':jj,
+                    {'jj':jj2,
                     'jg':jg,
                     'jgnf':jgnf}
                 });
@@ -196,14 +196,14 @@ partidoCtrl.createPartido = async (req, res, next) => {
                 await Posiciones.findOneAndUpdate(
                     {'equipo':req.body.equipo1,'categoria':req.body.categoria},
                     { "$set" : 
-                        {'jj':jj2,
+                        {'jj':jj,
                         'jp':jp,
                         'jpf':jpf} 
                     });
                 await Posiciones.findOneAndUpdate(
                     {'equipo':req.body.equipo2,'categoria':req.body.categoria},
                     { "$set" : 
-                        {'jj':jj,
+                        {'jj':jj2,
                         'jg':jg,
                         'jgf':jg,
                     }
@@ -213,6 +213,26 @@ partidoCtrl.createPartido = async (req, res, next) => {
         }
 
    }
+    var posiciones2 = await Posiciones.find({'equipo':req.body.equipo2,'categoria':req.body.categoria})
+    var posiciones1 = await Posiciones.find({'equipo':req.body.equipo1,'categoria':req.body.categoria})
+    var jj2 = posiciones2.map(function (posiciones2) {return posiciones2.jj;});
+    var jg2 = posiciones2.map(function (posiciones2) {return posiciones2.jg;});
+    var jj1 = posiciones1.map(function (posiciones1) {return posiciones1.jj;});
+    var jg1 = posiciones1.map(function (posiciones1) {return posiciones1.jg;});
+    pct1 = Number(jg1)/Number(jj1);
+    pct2 = Number(jg2)/Number(jj2);
+    await Posiciones.findOneAndUpdate(
+        {'equipo':req.body.equipo1,'categoria':req.body.categoria},
+        { "$set" : 
+            {'pct':pct1
+            } 
+        });
+    await Posiciones.findOneAndUpdate(
+        {'equipo':req.body.equipo2,'categoria':req.body.categoria},
+        { "$set" : 
+            {'pct':pct2
+        }
+        });
    await partido.save();
    res.json({status: 'Partido Creado'});
 };
@@ -309,14 +329,14 @@ partidoCtrl.deletePartido = async (req, res, next) => {
             await Posiciones.findOneAndUpdate(
                 {'equipo':equipo1,'categoria':categoria},
                 { "$set" : 
-                    {'jj':jj2,
+                    {'jj':jj,
                     'jp':jp,
                     'jpnf':jpnf} 
                 });
             await Posiciones.findOneAndUpdate(
                 {'equipo':equipo2,'categoria':categoria},
                 { "$set" : 
-                    {'jj':jj,
+                    {'jj':jj2,
                     'jg':jg,
                     'jgnf':jgnf}
                 });
@@ -424,14 +444,14 @@ partidoCtrl.deletePartido = async (req, res, next) => {
                 await Posiciones.findOneAndUpdate(
                     {'equipo':equipo1,'categoria':categoria},
                     { "$set" : 
-                        {'jj':jj2,
+                        {'jj':jj,
                         'jp':jp,
                         'jpf':jpf} 
                     });
                 await Posiciones.findOneAndUpdate(
                     {'equipo':equipo2,'categoria':categoria},
                     { "$set" : 
-                        {'jj':jj,
+                        {'jj':jj2,
                         'jg':jg,
                         'jgf':jg
                     }
@@ -441,6 +461,27 @@ partidoCtrl.deletePartido = async (req, res, next) => {
         }
 
    }
+    var posiciones2 = await Posiciones.find({'equipo':req.body.equipo2,'categoria':req.body.categoria})
+    var posiciones1 = await Posiciones.find({'equipo':req.body.equipo1,'categoria':req.body.categoria})
+    var jj2 = posiciones2.map(function (posiciones2) {return posiciones2.jj;});
+    var jg2 = posiciones2.map(function (posiciones2) {return posiciones2.jg;});
+    var jj1 = posiciones1.map(function (posiciones1) {return posiciones1.jj;});
+    var jg1 = posiciones1.map(function (posiciones1) {return posiciones1.jg;});
+    pct1 = Number(jg1)/Number(jj1);
+    pct2 = Number(jg2)/Number(jj2);
+    await Posiciones.findOneAndUpdate(
+        {'equipo':req.body.equipo1,'categoria':req.body.categoria},
+        { "$set" : 
+            {'pct':pct1
+            } 
+        });
+    await Posiciones.findOneAndUpdate(
+        {'equipo':req.body.equipo2,'categoria':req.body.categoria},
+        { "$set" : 
+            {'pct':pct2
+        }
+        });
+   
    await Partido.findByIdAndRemove(req.params.id);
    res.json({status: 'Partido Eliminado'});
 };
