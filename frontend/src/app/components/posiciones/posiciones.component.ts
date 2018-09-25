@@ -20,8 +20,7 @@ import { OrderPipe } from 'ngx-order-pipe';
 })
 export class PosicionesComponent implements OnInit {
   @Input('url') url: String;
-  pct: Number = 0;
-  order: string = 'jg';
+  order: string = 'pct';
   reverse: boolean = true;
   valor:string = 'Cachorros';
   selectedEquipo: Equipos;
