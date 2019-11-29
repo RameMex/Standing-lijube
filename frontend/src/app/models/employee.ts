@@ -1,6 +1,6 @@
 export class Employee {
 
-    constructor(_id = '', name = '',bateador='',cacha='',date ='', position = '', team = '', number = 0, categoria ='',situacion='') {
+    constructor(_id = '', name = '',bateador='',cacha='',date ='', position = '', team = '', number = 0, categoria ='',situacion='',seleccion='') {
         this._id = _id;
         this.name = name;
         this.bateador = bateador;
@@ -11,6 +11,7 @@ export class Employee {
         this.number = number;
         this.categoria = categoria;
         this.situacion = situacion;
+        this.seleccion = seleccion;
 
     }
 
@@ -24,4 +25,5 @@ export class Employee {
     number: number;
     categoria:string;
     situacion:string;
+    seleccion:string;
 }

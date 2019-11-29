@@ -7,7 +7,8 @@ const JugadorSchema = new Schema({
     Fecha: {type: Date, requiered:true},
     Position: {type: String, required: true},
     Team: {type: String, required:true},
-    Number: {type: Number, requiered:true}
+    Number: {type: Number, requiered:true},
+    Seleccionado : {type: String, required:true}
     
 });
 

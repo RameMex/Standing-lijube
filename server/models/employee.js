@@ -10,7 +10,8 @@ const employeeSchema = new Schema({
     team: { type: String, required: false },
     number: { type: Number, required: false},
     categoria: { type: String, required: false},
-    situacion:{type : String, required:false }
+    situacion:{type : String, required:false },
+    seleccion:{type : String, required:false }
 });
 
 module.exports = mongoose.model('Employee', employeeSchema);

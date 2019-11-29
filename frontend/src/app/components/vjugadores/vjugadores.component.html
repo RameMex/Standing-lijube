@@ -11,6 +11,7 @@
               <th class="fit">Nombre</th>
               <th>Fecha</th>
               <th id="estatus">Estatus</th>
+              <th>Seleccionado</th>
           </thead>
           <tbody>   
             <tr *ngFor="let employee of employeeService.employees">
@@ -32,7 +33,8 @@
                           <p>Promovido</p>
                     </div>
                     </div>
-                  </td>
+                </td>
+                <th>{{employee.}}</th>
             </tr>
           </tbody>
         </table>
