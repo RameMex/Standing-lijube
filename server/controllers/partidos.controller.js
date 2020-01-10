@@ -271,7 +271,7 @@ partidoCtrl.deletePartido = async (req, res, next) => {
     var categoria = partidos.map(function (partidos) {return partidos.categoria;});
     resultado1 = Number(resultado1);
     resultado2 = Number(resultado2);
-    if(empate == "" ){
+    if(empate == "" || empate == null){
         if(resultado1 > resultado2){
             var posiciones2 = await Posiciones.find({'equipo':equipo2,'categoria':categoria})
             var posiciones1 = await Posiciones.find({'equipo':equipo1,'categoria':categoria})
