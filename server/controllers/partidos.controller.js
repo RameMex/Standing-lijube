@@ -25,7 +25,8 @@ partidoCtrl.createPartido = async (req, res, next) => {
     var resultado21 = Number(req.body.resultado2);
     console.log(resultado11);
     console.log(resultado21);
-   if(req.body.empate == "" ){
+   if(req.body.empate == ""  || req.body.empate == null){
+       // Aqui simon si esta empatado el juego
         if(resultado11 > resultado21){
             var posiciones2 = await Posiciones.find({'equipo':req.body.equipo2,'categoria':req.body.categoria})
             var posiciones1 = await Posiciones.find({'equipo':req.body.equipo1,'categoria':req.body.categoria})
@@ -100,6 +101,7 @@ partidoCtrl.createPartido = async (req, res, next) => {
         }
        
    }else{
+        // Aqui no esta empatado el juego
         if(req.body.empate == "Empate"){
                 var posiciones2 = await Posiciones.find({'equipo':req.body.equipo2,'categoria':req.body.categoria})
                 var posiciones1 = await Posiciones.find({'equipo':req.body.equipo1,'categoria':req.body.categoria})
@@ -213,14 +215,14 @@ partidoCtrl.createPartido = async (req, res, next) => {
         }
 
    }
-    var posiciones2 = await Posiciones.find({'equipo':req.body.equipo2,'categoria':req.body.categoria})
-    var posiciones1 = await Posiciones.find({'equipo':req.body.equipo1,'categoria':req.body.categoria})
-    var jj2 = posiciones2.map(function (posiciones2) {return posiciones2.jj;});
-    var jg2 = posiciones2.map(function (posiciones2) {return posiciones2.jg;});
-    var jj1 = posiciones1.map(function (posiciones1) {return posiciones1.jj;});
-    var jg1 = posiciones1.map(function (posiciones1) {return posiciones1.jg;});
-    pct1 = Number(jg1)/Number(jj1);
-    pct2 = Number(jg2)/Number(jj2);
+    var posiciones2final = await Posiciones.find({'equipo':req.body.equipo2,'categoria':req.body.categoria})
+    var posiciones1final = await Posiciones.find({'equipo':req.body.equipo1,'categoria':req.body.categoria})
+    var jj2f = posiciones2final.map(function (posiciones2final) {return posiciones2final.jj;});
+    var jg2f = posiciones2final.map(function (posiciones2final) {return posiciones2final.jg;});
+    var jj1f = posiciones1final.map(function (posiciones1final) {return posiciones1final.jj;});
+    var jg1f = posiciones1final.map(function (posiciones1final) {return posiciones1final.jg;});
+    pct1 = Number(jg1f)/Number(jj1f);
+    pct2 = Number(jg2f)/Number(jj2f);
     await Posiciones.findOneAndUpdate(
         {'equipo':req.body.equipo1,'categoria':req.body.categoria},
         { "$set" : 
