@@ -18,6 +18,9 @@ partidoCtrl.createPartido = async (req, res, next) => {
         empate: req.body.empate,
         fecha: req.body.fecha
     });
+    if(req.body.empate == null){
+        req.body.empate == ""
+    }
     console.log(req.body.empate);
     console.log(req.body.resultado1);
     console.log(req.body.resultado2);
